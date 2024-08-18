@@ -514,6 +514,10 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
     releasedAt: Attribute.DateTime;
     scheduledAt: Attribute.DateTime;
     timezone: Attribute.String;
+    status: Attribute.Enumeration<
+      ['ready', 'blocked', 'failed', 'done', 'empty']
+    > &
+      Attribute.Required;
     actions: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToMany',
@@ -568,6 +572,7 @@ export interface PluginContentReleasesReleaseAction
       'manyToOne',
       'plugin::content-releases.release'
     >;
+    isEntryValid: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -796,7 +801,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   attributes: {
     categoryName: Attribute.String;
     slug: Attribute.UID<'api::category.category', 'categoryName'>;
-    mainImage: Attribute.Media;
+    mainImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -861,16 +866,42 @@ export interface ApiProductProduct extends Schema.CollectionType {
     productName: Attribute.String;
     slug: Attribute.UID<'api::product.product', 'productName'>;
     description: Attribute.Text;
-    images: Attribute.Media;
+    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     active: Attribute.Boolean & Attribute.DefaultTo<true>;
     price: Attribute.Decimal;
-    origin: Attribute.Enumeration<['Africa', 'Asia', 'America', 'Europe']>;
-    taste: Attribute.Enumeration<['sweet', 'citric']>;
+    origin: Attribute.Enumeration<
+      ['Palmata', 'Lana', 'Cuero', 'Toquilla', 'fieltro']
+    >;
     isFeatured: Attribute.Boolean;
+    genero: Attribute.Enumeration<
+      [
+        'Otavalo',
+        'Salasaca',
+        'Saraguro',
+        'Natabuela',
+        'Kayambi',
+        'Secoya',
+        'Aruchico',
+        'Montubio',
+        'Toquilla',
+        'Chullita',
+        'Chola',
+        'Puruh\u00E1'
+      ]
+    >;
     category: Attribute.Relation<
       'api::product.product',
       'oneToOne',
       'api::category.category'
+    >;
+    medida: Attribute.Enumeration<
+      [
+        'XS - 53 cm',
+        'S - 55.5 cm',
+        'M - 57.5 cm',
+        'L - 59.5 cm',
+        'XL - 61.5 cm'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

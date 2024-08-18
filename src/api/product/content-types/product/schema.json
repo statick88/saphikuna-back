@@ -13,14 +13,16 @@
   "pluginOptions": {},
   "attributes": {
     "productName": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "slug": {
       "type": "uid",
       "targetField": "productName"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {}
     },
     "images": {
       "type": "media",
@@ -31,38 +33,66 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {}
     },
     "active": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "pluginOptions": {}
     },
     "price": {
-      "type": "decimal"
+      "type": "decimal",
+      "pluginOptions": {}
     },
     "origin": {
       "type": "enumeration",
       "enum": [
-        "Africa",
-        "Asia",
-        "America",
-        "Europe"
-      ]
+        "Palmata",
+        "Lana",
+        "Cuero",
+        "Toquilla",
+        "fieltro"
+      ],
+      "pluginOptions": {}
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "pluginOptions": {}
     },
     "taste": {
       "type": "enumeration",
       "enum": [
-        "sweet",
-        "citric"
-      ]
-    },
-    "isFeatured": {
-      "type": "boolean"
+        "Otavalo",
+        "Salasaca",
+        "Saraguro",
+        "Natabuela",
+        "Kayambi",
+        "Secoya",
+        "Aruchico",
+        "Montubio",
+        "Toquilla",
+        "Chullita",
+        "Chola",
+        "Puruhá"
+      ],
+      "pluginOptions": {}
     },
     "category": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::category.category"
+    },
+    "medida": {
+      "type": "enumeration",
+      "enum": [
+        "XS - 53 cm",
+        "S - 55.5 cm",
+        "M - 57.5 cm",
+        "L - 59.5 cm",
+        "XL - 61.5 cm"
+      ],
+      "pluginOptions": {}
     }
   }
 }
