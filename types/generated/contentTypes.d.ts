@@ -873,7 +873,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       ['Palmata', 'Lana', 'Cuero', 'Toquilla', 'fieltro']
     >;
     isFeatured: Attribute.Boolean;
-    genero: Attribute.Enumeration<
+    taste: Attribute.Enumeration<
       [
         'Otavalo',
         'Salasaca',
